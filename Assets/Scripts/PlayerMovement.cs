@@ -4,12 +4,9 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float offset; //how much the player will move to get to the next lane
-    public int maxLanes; //must be a multiple of 3
+    public int additionalSideLanes; //additional lanes on both sides
     
     private Vector3 _startingPosition;
-    private Vector3 _maxLaneLeft;
-    private Vector3 _maxLaneRight;
-    private float _movementX;
     
     void Start()
     {
@@ -18,20 +15,12 @@ public class PlayerMovement : MonoBehaviour
         //Ignore this
         
         _startingPosition =  transform.position;
-
-        maxLanes /= 3;
         
-        _maxLaneLeft = transform.position + new Vector3(offset*maxLanes, 0, 0);
-        _maxLaneRight = transform.position - new Vector3(offset*maxLanes, 0, 0);
     }
     
     void Update()
     {
-        Vector3 desiredPosition = transform.position + new Vector3(offset * _movementX, 0, 0);
-        if (desiredPosition != transform.position)
-        {
-            
-        }
+        
     }
 
     void OnMove(InputValue movement)
@@ -40,14 +29,23 @@ public class PlayerMovement : MonoBehaviour
 
         if (movementVector.x > 0)
         {
-            _movementX = 1;
+            Vector3 desiredPosition = transform.position + new Vector3(offset, 0, 0);
+            float maxX = _startingPosition.x + (offset * additionalSideLanes);
+
+            if (desiredPosition.x <= maxX)
+            {
+                transform.position += new Vector3(offset, 0, 0);   
+            }
+            
         }else if (movementVector.x < 0)
         {
-            _movementX = -1;
-        }
-        else
-        {
-            _movementX = 0;
+            Vector3 desiredPosition = transform.position - new Vector3(offset, 0, 0);
+            float maxX = _startingPosition.x - (offset * additionalSideLanes);
+
+            if (desiredPosition.x >= maxX)
+            {
+                transform.position -= new Vector3(offset, 0, 0);
+            }
         }
     }
 }
