@@ -5,18 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="60b14c27-4587-43c3-846c-57fe8618a80c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../TutorialInfo.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Icons.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Icons/URP.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Icons/URP.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Layout.wlt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Layout.wlt.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Editor/ReadmeEditor.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Editor/ReadmeEditor.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Readme.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scripts/PlayerMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scripts/PlayerMovement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 3
 }]]></component>
@@ -55,13 +46,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1762377895614</updated>
-      <workItem from="1762377897141" duration="613000" />
+      <workItem from="1762377897141" duration="3299000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
