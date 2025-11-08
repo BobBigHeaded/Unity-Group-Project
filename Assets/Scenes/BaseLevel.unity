@@ -119,6 +119,91 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &233192410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 12.237931
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.027134895
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.7834787
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_DirtyAABB
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: -0.0000010728836
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 1.450494
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: -0.65684676
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Extent.x
+      value: 1.1972897
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Extent.y
+      value: 1.1995218
+      objectReference: {fileID: 0}
+    - target: {fileID: -6818237790511363450, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_AABB.m_Extent.z
+      value: 2.7851477
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
+      propertyPath: m_Name
+      value: Cars
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 67cc45dda15375e4888e52bddff60955, type: 3}
 --- !u!1 &419547130
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,6 +482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   player: {fileID: 1345159763}
+  cameraYOff: 0.608
 --- !u!1 &1345159763 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2994390785936216185, guid: 858cbc4e59a2c1e94ba9a47e9f99801c, type: 3}
@@ -741,3 +827,4 @@ SceneRoots:
   - {fileID: 2142690189}
   - {fileID: 6474254796172179274}
   - {fileID: 1786774430}
+  - {fileID: 233192410}
