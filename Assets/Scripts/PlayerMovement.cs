@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -30,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     {
         //Use the rigidbody movement to ensure that collisions are considered when moving
         _rb.MovePosition(_rb.position + new Vector3(_movementX * Time.fixedDeltaTime, 0, 0));
+        
+        GroundCheck();
     }
 
     void OnMove(InputValue movement)
@@ -57,9 +60,12 @@ public class PlayerMovement : MonoBehaviour
         //Raycast from the player to see if there is ground beneath them
         if (Physics.Raycast(transform.position, Vector3.down, _height/2 + 0.1f))
         {
+            _rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+            
             _isGrounded = true;
         }else
         {
+            _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
             _isGrounded = false;
         }
     }
