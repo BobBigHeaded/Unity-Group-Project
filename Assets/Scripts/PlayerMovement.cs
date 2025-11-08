@@ -3,24 +3,33 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float offset; //how much the player will move to get to the next lane
-    public int additionalSideLanes; //additional lanes on both sides
+    //styling how it looks in the inspector
+    [Header("Movement Settings")]
+    [Space(5)]
     
-    private Vector3 _startingPosition;
+    [Range(0, 3)]
+    public float speed = 3f;
+    [Range(0, 10)]
+    public float jumpForce = 2.8f;
+    
+    private Rigidbody _rb;
+    //Horizontal
+    private float _movementX = 0;
+    //Vertical 
+    private bool _isGrounded;
+    private float _height;
+    
     
     void Start()
     {
-        //Ignore this
-        //go left. and make right of left the middle. right of middle is not left, it is the right.
-        //Ignore this
-        
-        _startingPosition =  transform.position;
-        
+        _height = GetComponent<BoxCollider>().bounds.size.y;
+        _rb = GetComponent<Rigidbody>();
     }
-    
-    void Update()
+
+    void FixedUpdate()
     {
-        
+        //Use the rigidbody movement to ensure that collisions are considered when moving
+        _rb.MovePosition(_rb.position + new Vector3(_movementX * Time.fixedDeltaTime, 0, 0));
     }
 
     void OnMove(InputValue movement)
@@ -28,30 +37,30 @@ public class PlayerMovement : MonoBehaviour
         //basically x-axis is horizontal (A and D) movement and y is vertical (W and S)
         Vector2 movementVector = movement.Get<Vector2>();
 
-        if (movementVector.x > 0)//above 0 is right
-        {
-            //calculate where we want to be with current input
-            Vector3 desiredPosition = transform.position + new Vector3(offset, 0, 0);
-            //calculate the maximum point we can be at
-            //possible optimisation by defining this at the start
-            float maxX = _startingPosition.x + (offset * additionalSideLanes);
+        _movementX = movementVector.x * speed;
+    }
 
-            if (desiredPosition.x <= maxX) //if desired point is equal to or below or maximum then
-            {
-                //move the player by the offset
-                transform.position += new Vector3(offset, 0, 0);   
-            }
-            
-        }else if (movementVector.x < 0)// below 0 is left
+    void OnJump(InputValue jump)
+    {
+        //ensure the player is on the ground
+        GroundCheck();
+        
+        if (_isGrounded)
         {
-            //same as above but for negative
-            Vector3 desiredPosition = transform.position - new Vector3(offset, 0, 0);
-            float maxX = _startingPosition.x - (offset * additionalSideLanes);
+            //add velocity to the player to simulate jumping
+            _rb.linearVelocity += (Vector3.up *  jumpForce);
+        }
+    }
 
-            if (desiredPosition.x >= maxX)
-            {
-                transform.position -= new Vector3(offset, 0, 0);
-            }
+    void GroundCheck()
+    {
+        //Raycast from the player to see if there is ground beneath them
+        if (Physics.Raycast(transform.position, Vector3.down, _height/2 + 0.1f))
+        {
+            _isGrounded = true;
+        }else
+        {
+            _isGrounded = false;
         }
     }
 }
