@@ -3,7 +3,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public GameObject player;
-    [Range(0f, 1f)]
+    [Range(0f, 10f)]
     public float cameraYOff = 0.608f;
     
     void Update()

@@ -8,9 +8,9 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     [Space(5)]
     
-    [Range(0, 3)]
+    [Range(2, 10)]
     public float speed = 3f;
-    [Range(0, 10)]
+    [Range(2, 10)]
     public float jumpForce = 2.8f;
     
     private Rigidbody _rb;
@@ -58,15 +58,14 @@ public class PlayerMovement : MonoBehaviour
     void GroundCheck()
     {
         //Raycast from the player to see if there is ground beneath them
-        if (Physics.Raycast(transform.position, Vector3.down, _height/2 + 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, _height+0.1f))
         {
-            _rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
-            
             _isGrounded = true;
         }else
         {
-            _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
             _isGrounded = false;
         }
+        
+        Debug.DrawRay(transform.position, Vector3.down, Color.red);
     }
 }
