@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class PlinkoDropper : MonoBehaviour
@@ -9,10 +8,13 @@ public class PlinkoDropper : MonoBehaviour
     [Header("Player Data")]
     [Range(1, 4)]
     public float speed;
+    [Range(0, 100)]
+    public int ballCount = 20;
     public GameObject ball;
     
-    
     private bool _goingToStart = true;
+    private int _winCount;
+    private int _loseCount;
     
     // Update is called once per frame
     void Update()
@@ -33,10 +35,39 @@ public class PlinkoDropper : MonoBehaviour
                 _goingToStart = true;
             }
         }
+
+        if (ballCount <= 0)
+        {
+            if (_winCount >= _loseCount)
+            {
+                //gain a life
+            }
+        }
     }
 
     void OnJump()
     {
+        if (ballCount <= 0) return;
+        
         Instantiate(ball, transform.position, transform.rotation);
+        ballCount--;
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Win":
+                _winCount++;
+                break;
+            
+            case "Lose":
+                _loseCount++;
+                break;
+            
+            case "Again":
+                ballCount++;
+                break;
+        }
     }
 }
