@@ -24,7 +24,6 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     private float _height;
     
-    
     void Start()
     {
         _height = GetComponent<BoxCollider>().bounds.size.y;

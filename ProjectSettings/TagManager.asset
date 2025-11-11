@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 3
   tags:
   - Walkable
+  - Win
+  - Lose
+  - Again
   - Bounceable
   layers:
   - Default
