@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -23,6 +24,9 @@ public class PlayerMovement : MonoBehaviour
     //Vertical 
     private bool _isGrounded;
     private float _height;
+
+    //game over text
+    public TextMeshProUGUI gameOverText;
     
     
     void Start()
@@ -112,6 +116,13 @@ public class PlayerMovement : MonoBehaviour
         if (hitPlayer == true)
         {
             _health -= collision.gameObject.GetComponentInParent<VehicleCollisionValues>().damage;
+
+
+            if (_health <= 0)
+            {
+                gameOverText.enabled = true;
+                Debug.Log("Player should be dead");
+            }
         }
     }
 }
