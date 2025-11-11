@@ -1,13 +1,14 @@
 using System.Collections;
 using UnityEngine;
+using System.Collections.Generic;
 
 public class SpawnCars : MonoBehaviour
 {
     public GameObject car1;
     public GameObject car2;
     public GameObject car3;
+    public List<GameObject> obstacles = new List<GameObject>();
 
-    
     private IEnumerator coroutine;
     private float delayTime = 3;
     private string toSpawn;
@@ -16,33 +17,27 @@ public class SpawnCars : MonoBehaviour
     void Start()
     {
         StartCoroutine(delaySpawn());
-
     }
 
     void spawnCar()
     {
+        Debug.Log("Start spawn");
+
         //select lane
-        float[] lanes = { -16.5f, 0, 23.5f };
+        float[] lanes = { -3, 0, 3 };
         int temp = Random.Range(0, 3);
 
-        //select vehicle
-        string[] cars = { "car1", "car2", "car3", "Police 1", "Towtruck 1", "Truck 1", "Van 1", "VanBig" };
-        toSpawn = cars[Random.Range(0, 3)];
+        Vector3 spawnLocation = new Vector3(lanes[temp], 0.15f, 15f);
 
-        Vector3 spawnLocation = new Vector3(lanes[temp], 0.5f, 15f);
-
-        Instantiate(car1, spawnLocation, transform.rotation);
+        Instantiate(obstacles[Random.Range(0, 3)], spawnLocation, transform.rotation);
+        Debug.Log("End spawn");
     }
 
     IEnumerator delaySpawn()
     {
-        Debug.Log("Start Coro");
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2);
         spawnCar();
         StartCoroutine(delaySpawn());
-
-
-        Debug.Log("End of delay");
     }
 
     // Update is called once per frame
