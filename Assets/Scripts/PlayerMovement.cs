@@ -7,14 +7,19 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
     [Space(5)]
     
-    [Range(0, 3)]
+    [Range(2, 10)]
     public float speed = 3f;
-    [Range(0, 10)]
+    [Range(2, 10)]
     public float jumpForce = 2.8f;
     
+    //Values
+    private int _health = 3;
+    //Components
     private Rigidbody _rb;
+    
     //Horizontal
-    private float _movementX = 0;
+    private float _movementX;
+    
     //Vertical 
     private bool _isGrounded;
     private float _height;
@@ -30,7 +35,7 @@ public class PlayerMovement : MonoBehaviour
         //Use the rigidbody movement to ensure that collisions are considered when moving
         _rb.MovePosition(_rb.position + new Vector3(_movementX * Time.fixedDeltaTime, 0, 0));
         
-        GroundCheck();
+        _isGrounded = BeneathCheck("Walkable");
     }
 
     void OnMove(InputValue movement)
@@ -44,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
     void OnJump(InputValue jump)
     {
         //ensure the player is on the ground
-        GroundCheck();
+        _isGrounded = BeneathCheck("Walkable");
         
         if (_isGrounded)
         {
@@ -53,18 +58,59 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void GroundCheck()
+    bool BeneathCheck(string tagName)
     {
         //Raycast from the player to see if there is ground beneath them
-        if (Physics.Raycast(transform.position, Vector3.down, _height/2 + 0.1f))
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, _height+0.1f))
         {
-            _rb.constraints = RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezePositionZ;
+            //if collided
+            Debug.DrawRay(transform.position, Vector3.down, Color.darkGreen);
+
+            if (hit.collider.CompareTag(tagName))
+            {
+                return true;
+            }
+        }
+        //otherwise
+        Debug.DrawRay(transform.position, Vector3.down, Color.red);
+        return false;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        var hitPlayer = false;
+        
+        //check if object can be bounce or ridden
+        switch (collision.gameObject.tag)
+        {
+            case ("Bounceable"):
+                //ensure it is beneath us and we haven't touched the side
+                if (BeneathCheck("Bounceable"))
+                {
+                    //get bounce force from the collided object
+                    var bounceForce = collision.gameObject.GetComponentInParent<VehicleCollisionValues>().bounceForce;
+                    //add velocity up to simulate a bounce
+                    _rb.linearVelocity += (Vector3.up * bounceForce);
+                    
+                }else hitPlayer = true;
+                
+                break;
+            case ("Walkable"):
+                //if not walkable hit the player
+                if (!BeneathCheck("Walkable"))
+                {
+                    hitPlayer = true;
+                }
+                break;
             
-            _isGrounded = true;
-        }else
+            default://if nothing hit player false
+                hitPlayer = true;
+                break;
+        }
+        //Take a life from the player
+        if (hitPlayer == true)
         {
-            _rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
-            _isGrounded = false;
+            _health -= collision.gameObject.GetComponentInParent<VehicleCollisionValues>().damage;
         }
     }
 }
