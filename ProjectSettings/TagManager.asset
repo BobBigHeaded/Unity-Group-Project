@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Walkable
+  - Bounceable
   layers:
   - Default
   - TransparentFX
