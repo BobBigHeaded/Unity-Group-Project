@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     //Vertical 
     private bool _isGrounded;
     private float _height;
-    
     
     void Start()
     {
