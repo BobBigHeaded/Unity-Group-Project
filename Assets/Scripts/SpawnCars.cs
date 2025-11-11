@@ -28,17 +28,16 @@ public class SpawnCars : MonoBehaviour
 
     void spawnCar()
     {
-        Debug.Log("Start spawn");
-
         //select lane
         float[] lanes = { -3.7f, 0, 3.9f };
         int rnd = Random.Range(0, 3);
 
+        //set spawn coordinates
         Vector3 spawnLocation = new Vector3(lanes[rnd], 0.15f, 15f);
         GameObject temp = obstacles[Random.Range(0, 9)];
 
+        //spawn object
         Instantiate(temp, spawnLocation, temp.transform.rotation);
-        Debug.Log("End spawn");
     }
 
     IEnumerator delaySpawn()
