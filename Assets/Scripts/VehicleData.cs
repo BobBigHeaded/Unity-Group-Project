@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -18,6 +17,6 @@ public class VehicleCollisionValues : MonoBehaviour
     {
         var materialNum = Random.Range(0, materials.Count);
         
-        this.GetComponent<MeshRenderer>().material = materials[materialNum];
+        GetComponent<MeshRenderer>().material = materials[materialNum];
     }
 }
