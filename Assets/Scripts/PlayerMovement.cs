@@ -13,7 +13,7 @@ public class PlayerMovement : MonoBehaviour
     public float jumpForce = 2.8f;
     
     //Values
-    private int _health;
+    private int _health = 3;
     //Components
     private Rigidbody _rb;
     
@@ -97,12 +97,15 @@ public class PlayerMovement : MonoBehaviour
                 
                 break;
             case ("Walkable"):
-
+                //if not walkable hit the player
                 if (!BeneathCheck("Walkable"))
                 {
                     hitPlayer = true;
                 }
-                
+                break;
+            
+            default://if nothing hit player false
+                hitPlayer = true;
                 break;
         }
         //Take a life from the player
