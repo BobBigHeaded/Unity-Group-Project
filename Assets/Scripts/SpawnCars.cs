@@ -7,6 +7,13 @@ public class SpawnCars : MonoBehaviour
     public GameObject car1;
     public GameObject car2;
     public GameObject car3;
+    public GameObject car4;
+    public GameObject car5;
+    public GameObject car6;
+    public GameObject car7;
+    public GameObject car8;
+    public GameObject car9;
+
     public List<GameObject> obstacles = new List<GameObject>();
 
     private IEnumerator coroutine;
@@ -24,18 +31,19 @@ public class SpawnCars : MonoBehaviour
         Debug.Log("Start spawn");
 
         //select lane
-        float[] lanes = { -3, 0, 3 };
-        int temp = Random.Range(0, 3);
+        float[] lanes = { -3.7f, 0, 3.9f };
+        int rnd = Random.Range(0, 3);
 
-        Vector3 spawnLocation = new Vector3(lanes[temp], 0.15f, 15f);
+        Vector3 spawnLocation = new Vector3(lanes[rnd], 0.15f, 15f);
+        GameObject temp = obstacles[Random.Range(0, 9)];
 
-        Instantiate(obstacles[Random.Range(0, 3)], spawnLocation, transform.rotation);
+        Instantiate(temp, spawnLocation, temp.transform.rotation);
         Debug.Log("End spawn");
     }
 
     IEnumerator delaySpawn()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(4);
         spawnCar();
         StartCoroutine(delaySpawn());
     }
