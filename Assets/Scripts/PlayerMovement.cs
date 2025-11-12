@@ -12,6 +12,10 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     [Range(2, 10)]
     public float jumpForce = 2.8f;
+    [Header("UI References")]
+    //game over text
+    public TextMeshProUGUI gameOverText;
+    
     
     //Components
     private Rigidbody _rb;
@@ -22,9 +26,6 @@ public class PlayerMovement : MonoBehaviour
     //Vertical 
     private bool _isGrounded;
     private float _height;
-
-    //game over text
-    public TextMeshProUGUI gameOverText;
     
     
     void Start()
