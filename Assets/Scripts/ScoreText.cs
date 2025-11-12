@@ -16,17 +16,12 @@ public class ScoreText : MonoBehaviour
 
     IEnumerator scoreCounter()
     {
+        //increase the players score
         yield return new WaitForSeconds(0.1f);
 
         score++;
         scoreText.text = "Score: " + score.ToString();
 
         StartCoroutine(scoreCounter());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

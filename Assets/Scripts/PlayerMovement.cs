@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,9 +12,11 @@ public class PlayerMovement : MonoBehaviour
     public float speed = 3f;
     [Range(2, 10)]
     public float jumpForce = 2.8f;
+    [Header("UI References")]
+    //game over text
+    public TextMeshProUGUI gameOverText;
     
-    //Values
-    private int _health = 3;
+    
     //Components
     private Rigidbody _rb;
     
@@ -107,10 +110,12 @@ public class PlayerMovement : MonoBehaviour
                 hitPlayer = true;
                 break;
         }
+        
         //Take a life from the player
-        if (hitPlayer == true)
-        {
-            _health -= collision.gameObject.GetComponentInParent<VehicleCollisionValues>().damage;
-        }
+        if (!hitPlayer) return;
+        
+        gameOverText.enabled = true;
+
+        Time.timeScale = 0;
     }
 }
