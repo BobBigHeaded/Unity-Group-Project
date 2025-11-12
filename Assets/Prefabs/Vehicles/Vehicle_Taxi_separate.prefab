@@ -512,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c908784cea9fb378dad87a74300c56f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TestMove
-  moveSpeed: 3
+  moveSpeed: 4
 --- !u!1 &9200773298188307640
 GameObject:
   m_ObjectHideFlags: 0
