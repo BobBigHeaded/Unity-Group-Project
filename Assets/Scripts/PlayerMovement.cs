@@ -13,8 +13,6 @@ public class PlayerMovement : MonoBehaviour
     [Range(2, 10)]
     public float jumpForce = 2.8f;
     
-    //Values
-    private int _health = 3;
     //Components
     private Rigidbody _rb;
     
@@ -112,17 +110,10 @@ public class PlayerMovement : MonoBehaviour
                 hitPlayer = true;
                 break;
         }
+        
         //Take a life from the player
-        if (hitPlayer == true)
-        {
-            _health -= collision.gameObject.GetComponentInParent<VehicleCollisionValues>().damage;
-
-
-            if (_health <= 0)
-            {
-                gameOverText.enabled = true;
-                Debug.Log("Player should be dead");
-            }
-        }
+        if (!hitPlayer) return;
+        
+        gameOverText.enabled = true;
     }
 }
