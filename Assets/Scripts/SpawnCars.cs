@@ -21,7 +21,7 @@ public class SpawnCars : MonoBehaviour
         int rnd = Random.Range(0, 3);
 
         //set spawn coordinates
-        Vector3 spawnLocation = new Vector3(lanes[rnd], 0.15f, 15f);
+        Vector3 spawnLocation = new Vector3(lanes[rnd], 0.15f, 25f);
         GameObject temp = obstacles[Random.Range(0, 9)];
 
         //spawn object
@@ -30,6 +30,7 @@ public class SpawnCars : MonoBehaviour
 
     IEnumerator DelaySpawn(int delay)
     {
+        //spawns cars until the game ends
         yield return new WaitForSeconds(delay);
         SpawnCar();
         StartCoroutine(DelaySpawn(delay));

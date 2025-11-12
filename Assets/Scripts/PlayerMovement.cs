@@ -116,5 +116,7 @@ public class PlayerMovement : MonoBehaviour
         if (!hitPlayer) return;
         
         gameOverText.enabled = true;
+
+        Time.timeScale = 0;
     }
 }

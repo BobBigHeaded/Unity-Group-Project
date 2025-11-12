@@ -21,16 +21,11 @@ public class SpawnRoads : MonoBehaviour
 
     IEnumerator delaySpawn()
     {
+        //spawns road until the game ends
         yield return new WaitForSeconds(spawnTimer);
 
         Instantiate(road, spawnLocation, transform.rotation);
 
         StartCoroutine(delaySpawn());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
